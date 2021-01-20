@@ -1,16 +1,10 @@
-export { Component } from './components/Component'
+import { Stepper } from "./components/Stepper";
 
-const enum EnumTest {
-    VALUE1 = 1,
-    VALUE2 = 2,
-  }
-  
-  const test = (): string => {
-    const abc = [EnumTest.VALUE1, EnumTest.VALUE2];
-    if (abc[0] === EnumTest.VALUE1) {
-      return "test1";
-    }
-    return "test2";
-  };
-  
-  console.log(test());
+function getFirstItem<T>(list: T[]): T {
+  return list[0];
+}
+
+export {
+  getFirstItem,
+  Stepper
+}

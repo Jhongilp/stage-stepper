@@ -1,38 +1,24 @@
 import typescript from "rollup-plugin-typescript2";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import external from "rollup-plugin-peer-deps-external";
+import del from "rollup-plugin-delete";
 import pkg from "./package.json";
 
-const external = [
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {}),
-  ];
-
-const extensions = [".js", ".jsx", ".ts", ".tsx"];
-const input = "src/index.ts";
-
-const plugins = [
-  typescript({
-    typescript: require("typescript"),
-  }),
-];
-
-export default [
-  {
-    input,
-    output: {
-      file: pkg.module,
-      format: "esm",
-      sourcemap: true,
-    },
-    plugins,
-  },
-  {
-    input,
-    output: {
-      file: pkg.main,
-      format: "cjs",
-      sourcemap: true,
-    },
-    plugins,
-    external,
-  },
-];
+export default {
+  input: pkg.source,
+  output: [
+    { file: pkg.main, format: "cjs" },
+    { file: pkg.module, format: "esm" },
+  ],
+  plugins: [
+    resolve(),
+    commonjs(),
+    external(),
+    typescript({
+      typescript: require("typescript"),
+    }),
+    del({ targets: ["dist/*"] }),
+  ],
+  external: Object.keys(pkg.peerDependencies || {}),
+};
