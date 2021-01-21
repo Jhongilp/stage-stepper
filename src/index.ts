@@ -1,10 +1,4 @@
 import { Stepper } from "./components/Stepper";
+import { CheckpointProps, Step, StepperProps, StepList } from "./types";
 
-function getFirstItem<T>(list: T[]): T {
-  return list[0];
-}
-
-export {
-  getFirstItem,
-  Stepper
-}
+export { Stepper, CheckpointProps, Step, StepperProps, StepList };
