@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
 import del from "rollup-plugin-delete";
+import postcss from "rollup-plugin-postcss";
 import pkg from "./package.json";
 
 export default {
@@ -18,6 +19,7 @@ export default {
     typescript({
       typescript: require("typescript"),
     }),
+    postcss(),
     del({ targets: ["dist/*"] }),
   ],
   external: Object.keys(pkg.peerDependencies || {}),
