@@ -1,5 +1,6 @@
 .st-wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
     height: 100%;
     width: 100%;
@@ -27,10 +28,28 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    border-radius: 50%;
+    // border-radius: 50%;
     top: 0;
     left: 0;
-    background-color: orange;
+    background-color: #ccc;
     z-index: 2;
 
 }
+
+
+// 
+
+.svg-wrapper-test {
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-ring__circle {
+    transition: 0.35s stroke-dashoffset;
+    // axis compensation
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
