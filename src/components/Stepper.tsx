@@ -3,9 +3,9 @@ import { StepperProps, Step, CheckpointProps } from "../types";
 import CheckpointCircularProgress from './checkpoint/Checkpoint';
 import "./_stepper.scss";
 
-const Checkpoint: FC<CheckpointProps> = ({ position, size, barHeight }) => {
+const Checkpoint: FC<CheckpointProps> = ({ position, size, barHeight, progress }) => {
   return (
-    <CheckpointCircularProgress progress={50} position={position} size={size} barHeight={barHeight}/>
+    <CheckpointCircularProgress progress={progress} position={position} size={size} barHeight={barHeight}/>
     // <div
     //   className="st-progress-bar-checkpoint"
     //   style={{
@@ -31,6 +31,7 @@ export const Stepper: FC<StepperProps> = ({ steps, height }) => {
               position={stepPosition}
               size={step.size}
               barHeight={height}
+              progress={step.progress}
             />
           );
         })}

@@ -15,4 +15,5 @@ export interface CheckpointProps {
   position: number;
   size: number;
   barHeight: number;
+  progress: number;
 }

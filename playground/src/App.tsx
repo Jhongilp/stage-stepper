@@ -2,12 +2,12 @@ import './App.css';
 // @ts-ignore
 import { Stepper, Step, StepperProps, StepList, CheckpointProps } from 'stage-stepper'
 
-const STEP_SIZE = 30;
+const STEP_SIZE = 50;
 
 const steps: StepList = [
   {
     name: "En planta",
-    progress: 0,
+    progress: 80,
     size: STEP_SIZE
   },
   {
@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <div className="app-wrapper">
-        <Stepper steps={steps} height={10}/>
+        <Stepper steps={steps} height={5}/>
 
       </div>
     </div>
