@@ -1,20 +1,21 @@
 import React, { FC } from "react";
 import { StepperProps, Step, CheckpointProps } from "../types";
-import CheckpointCircularProgress from './checkpoint/Checkpoint';
+import CheckpointCircularProgress from "./checkpoint/Checkpoint";
 import "./_stepper.scss";
 
-const Checkpoint: FC<CheckpointProps> = ({ position, size, barHeight, progress }) => {
+const Checkpoint: FC<CheckpointProps> = ({
+  position,
+  size,
+  barHeight,
+  progress,
+}) => {
   return (
-    <CheckpointCircularProgress progress={progress} position={position} size={size} barHeight={barHeight}/>
-    // <div
-    //   className="st-progress-bar-checkpoint"
-    //   style={{
-    //     left: `calc(${position}% - ${size / 2}px)`,
-    //     top: `${-(size / 2 - barHeight / 2)}px`,
-    //     width: size,
-    //     height: size,
-    //   }}
-    // ></div>
+    <CheckpointCircularProgress
+      progress={progress}
+      position={position}
+      size={size}
+      barHeight={barHeight}
+    />
   );
 };
 
@@ -37,7 +38,6 @@ export const Stepper: FC<StepperProps> = ({ steps, height }) => {
         })}
         <div className="st-progress_bar-progress"></div>
       </div>
-      {/* <CheckpointTest /> */}
     </div>
   );
 };

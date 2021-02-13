@@ -1,18 +1,13 @@
 import React, { FC, useState, useRef, useEffect, ReactNode } from "react";
-import { CheckpointProps } from '../../types'
+import { CheckpointProps } from "../../types";
 
 type CircularProgressProps = {
   progress: number;
 };
 
-const CheckpointCircularProgress: FC<CircularProgressProps & CheckpointProps> = ({
-  progress,
-  position,
-  size,
-  barHeight
-}) => {
-// const CheckpointCircularProgress = () => {
-  // const [progress, setProgress] = useState(35);
+const CheckpointCircularProgress: FC<
+  CircularProgressProps & CheckpointProps
+> = ({ progress, position, size, barHeight }) => {
   const [circumference, setCircumference] = useState(0);
   const [cssStyle, setStyle] = useState({
     strokeDasharray: `${0} ${0}`,
@@ -27,33 +22,30 @@ const CheckpointCircularProgress: FC<CircularProgressProps & CheckpointProps> = 
       const circumference = radio * 2 * Math.PI;
       console.log("[mount] radio value: ", radio);
       console.log("[mount] circumference value: ", circumference);
-      const offset = circumference - progress / 100 * circumference;
+      const offset = circumference - (progress / 100) * circumference;
       const style = {
         strokeDasharray: `${circumference} ${circumference}`,
         strokeDashoffset: `${offset}`,
-        // strokeDashoffset: `${circumference}`,
       };
-      setCircumference(circumference)
+      setCircumference(circumference);
       setStyle(style);
     }
   }, [circleRef.current]);
 
   useEffect(() => {
-    // const offset = circumference - parseInt(e.target.value) / 100 * circumference;
-    const offset = circumference - progress / 100 * circumference;
-    console.log("offset: ", offset)
-    console.log("on change circumference: ", circumference)
+    const offset = circumference - (progress / 100) * circumference;
+    console.log("offset: ", offset);
+    console.log("on change circumference: ", circumference);
     const style = {
       strokeDasharray: `${circumference} ${circumference}`,
       strokeDashoffset: `${offset}`,
     };
     setStyle(style);
-  }, [progress])
+  }, [progress]);
 
   return (
-    <div 
-      // className="svg-wrapper-test" 
-      className="st-progress-bar-checkpoint" 
+    <div
+      className="st-progress-bar-checkpoint"
       style={{
         left: `calc(${position}% - ${size / 2}px)`,
         top: `${-(size / 2 - barHeight / 2)}px`,
@@ -61,7 +53,12 @@ const CheckpointCircularProgress: FC<CircularProgressProps & CheckpointProps> = 
         height: size,
       }}
     >
-      <svg className="progress-ring" viewBox="0 0 24 24" width="100%" height="100%">
+      <svg
+        className="progress-ring"
+        viewBox="0 0 24 24"
+        width="100%"
+        height="100%"
+      >
         <circle
           ref={circleRef}
           className="progress-ring__circle"
